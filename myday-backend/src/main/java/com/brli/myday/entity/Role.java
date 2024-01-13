@@ -2,7 +2,7 @@ package com.brli.myday.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author brandon

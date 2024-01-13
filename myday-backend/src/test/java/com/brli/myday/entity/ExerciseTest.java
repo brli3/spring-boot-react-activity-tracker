@@ -6,7 +6,7 @@ import com.brli.myday.repository.ExerciseRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +19,6 @@ class ExerciseTest {
 
   @Resource
   ExerciseRepository exerciseRepository;
-
-  @Resource
-  ExerciseCategoryRepository categoryRepository;
 
   @Test
   void createExercise() {
