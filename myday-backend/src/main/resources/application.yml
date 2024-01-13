@@ -1,0 +1,25 @@
+server:
+  port: 9364
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/myday?useSSL=false
+    username: root
+    password: abcd1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  secret: myday
+  expirationMs: 86400000
+  subject: myday
+
+authWhiteList:
+  /v3/api-docs/**,
+  /swagger-ui,
+  /swagger-ui/**,
+  /swagger-ui.html,
+  /api/auth/**
