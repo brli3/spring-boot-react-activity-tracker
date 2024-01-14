@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 /**
@@ -28,26 +28,23 @@ public class JwtUtils {
   @Value("${jwt.expirationMs}")
   private int jwtExpirationMs;
 
-  private Key key() {
+  //private SecretKey key() {
+  private SecretKey key() {
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
   public String generateJwtToken(Authentication authentication) {
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
     return Jwts.builder()
-            //.setSubject(jwtSubject)
-            .setSubject(userPrincipal.getUsername())
-            //.claim("id", userPrincipal.getId())
-            //.claim("username", userPrincipal.getUsername())
-            .setIssuedAt(new Date())
-            .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
-            .signWith(key(), SignatureAlgorithm.HS256)
-            //.signWith(SignatureAlgorithm.HS512, jwtSecret)
+            .subject(userPrincipal.getUsername())
+            .issuedAt(new Date())
+            .expiration(new Date(new Date().getTime() + jwtExpirationMs))
+            .signWith(key())
             .compact();
   }
 
   public boolean validateJwtToken(String authToken) {
     try {
-    Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
+      Jwts.parser().verifyWith(key()).build().parse(authToken);
     return true;
   } catch (MalformedJwtException e) {
     log.error("Invalid JWT token: {}", e.getMessage());
@@ -61,7 +58,7 @@ public class JwtUtils {
     return false;
   }
   private Claims getClaimsFromJwt(String token) {
-    return Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJws(token).getBody();
+    return Jwts.parser().verifyWith(key()).build().parseSignedClaims(token).getPayload();
   }
 
   public String getUsernameFromJwt(String token) {
