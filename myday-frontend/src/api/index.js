@@ -99,8 +99,6 @@ export const reqAddOrUpdateExercise = (exercise) => {
 export const reqDeleteExercise = (id) =>
   ajax(`${BASE_URL}/exercise/${id}`, {}, "delete", authHeader());
 
-
-
 export const reqMealCategories = () =>
   ajax(`${BASE_URL}/meal/category/all`, {}, "get", authHeader());
 
