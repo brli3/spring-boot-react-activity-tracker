@@ -13,7 +13,7 @@ spring:
     show-sql: true
 
 jwt:
-  secret: myday
+  secret: ======================SpringBoot3=MyDay==========================
   expirationMs: 86400000
   subject: myday
 
