@@ -19,6 +19,4 @@ React 18 frontend
 
 <img src="doc/Screenshot 2024-01-14 at 22.27.33.png" alt="Screenshot 2024-01-14 at 22.27.33" style="zoom:50%;" />
 
-<img src="doc/Screenshot 2024-01-14 at 22.30.22.png" alt="Screenshot 2024-01-14 at 22.30.22" style="zoom:50%;" />
-
 <img src="doc/Screenshot 2024-01-14 at 22.31.04.png" alt="Screenshot 2024-01-14 at 22.31.04" style="zoom:50%;" />
