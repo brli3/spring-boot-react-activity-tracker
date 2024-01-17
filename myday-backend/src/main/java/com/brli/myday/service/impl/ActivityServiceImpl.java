@@ -219,8 +219,8 @@ public class ActivityServiceImpl implements ActivityService {
 
   private ActivityDto getActivityDto(Activity activity) {
     var activityDto = modelMapper.map(activity, ActivityDto.class);
-    activityDto.setMealRecords(getMealRecordDtosFromActivity(activity));
-    activityDto.setExerciseRecords(getExerciseRecordDtosFromActivity(activity));
+    //activityDto.setMealRecords(getMealRecordDtosFromActivity(activity));
+    //activityDto.setExerciseRecords(getExerciseRecordDtosFromActivity(activity));
     return activityDto;
   }
 
